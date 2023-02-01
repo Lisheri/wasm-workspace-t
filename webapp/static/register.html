@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h2>Teacher registration</h2>
+    <div class="center">
+        <form action="/register-post" method="post">
+            <label for="name">Teacher Name</label><br />
+            <input type="text" name="name" id="name" value="{{current_name}}" /><br />
+            <label for="image_url">Teacher Img Url</label><br />
+            <input type="text" name="image_url" id="image_url" value="{{current_image_url}}" /><br />
+            <label for="profile">Teacher Profile</label><br />
+            <input type="text" name="profile" id="profile" value="{{current_profile}}" /><br />
+            <label for="error">
+                <p style="color: red;">{{error}}</p>
+            </label>
+            <br />
+            <button type="submit" id="button1">Register</button>
+        </form>
+    </div>
+</body>
+</html>

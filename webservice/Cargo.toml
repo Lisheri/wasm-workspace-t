@@ -1,0 +1,32 @@
+[package]
+name = "webservice"
+version = "0.1.0"
+edition = "2021"
+# 不指明二进制文件则首先执行 teacher-service
+default-run="teacher-service"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# 处理跨域
+actix-cors = "0.6.0-beta.10"
+actix-web = "4"
+actix-rt = "2.7.0"
+# 开启的特性就是 serde
+chrono = { version = "0.4.19", features = ["serde"] }
+# 设置环境变量
+dotenv = "0.15.0"
+openssl = { version = "0.10.38", features = ["vendored"] } # 可要可不要
+serde = { version = "1.0.134", features = ["derive"] }
+sqlx = { version = "0.6.2", features = [
+    "postgres", # 开启 postgres, 因为这里链接的是 postgres
+    "runtime-tokio-rustls", # 这里使用 tokio运行时, 以及tls相关功能
+    "macros", # 开启宏
+    "chrono" # chrono 特性
+]}
+
+# 指定二进制的名称, 内部 [bin] 其实是一个数组, 可以指定多个区域
+[[bin]]
+name = "server1"
+[[bin]]
+name = "teacher-service"
